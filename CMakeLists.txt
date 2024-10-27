@@ -143,7 +143,9 @@ include_directories(
 add_executable(meca3_pub_odom src/pub_odom.cpp)
 add_executable(meca3_joycon   src/joycon.cpp)
 add_executable(meca3_mouse   src/mouse_receiver.cpp)
-
+add_executable(meca3_aruco   src/aruco.cpp)
+add_executable(meca3_subpub   src/fiducial_subpub.cpp)
+add_executable(meca3_trans   src/fiducial_transform_listener.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -164,8 +166,15 @@ target_link_libraries(meca3_joycon
 target_link_libraries(meca3_mouse 
   ${catkin_LIBRARIES}
 )
-
-
+target_link_libraries(meca3_aruco 
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(meca3_subpub 
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(meca3_trans 
+  ${catkin_LIBRARIES}
+)
 
 set_target_properties(meca3_pub_odom
                       PROPERTIES OUTPUT_NAME pub_odom
@@ -178,6 +187,17 @@ set_target_properties(meca3_mouse
                       PROPERTIES OUTPUT_NAME mouse_receiver
                       PREFIX "")
 
+set_target_properties(meca3_aruco
+                      PROPERTIES OUTPUT_NAME aruco
+                      PREFIX "") 
+
+set_target_properties(meca3_subpub
+                      PROPERTIES OUTPUT_NAME fiducial_subpub
+                      PREFIX "") 
+                      
+ set_target_properties(meca3_trans
+                      PROPERTIES OUTPUT_NAME fiducial_transform_listener
+                      PREFIX "") 
 #############
 ## Install ##
 #############
@@ -230,6 +250,7 @@ install(DIRECTORY urdf
 install(DIRECTORY map
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
+
 
 #############
 ## Testing ##

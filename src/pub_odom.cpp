@@ -42,8 +42,9 @@ int main(int argc, char** argv){
 
   ros::Rate r(20);
   while(n.ok()){
-
-    ros::spinOnce();               // check for incoming messages
+    ros::spinOnce();
+    // ros::spin"/usr/include",  // Standard system include path
+    //             "/usr/local/include"  // Local include pathOnce();               // check for incoming messages
     current_time = ros::Time::now();
 
     //compute odometry in a typical way given the velocities of the robot
