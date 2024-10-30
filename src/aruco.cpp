@@ -36,9 +36,14 @@ private:
         if (!msg->transforms.empty()) {
             const geometry_msgs::Vector3& translation = msg->transforms[0].transform.translation;
             const geometry_msgs::Quaternion& rotation = msg->transforms[0].transform.rotation;
-            twist_.linear.x = 0;
-            twist_.linear.y = translation.x;
             twist_.angular.z = rotation.z; // 必要に応じて設定
+            if(rotation.z<0.1 && rotation.z>-0.1){
+                twist_.linear.x = translation.x;
+                twist_.linear.y = translation.z-0.7;
+            }else{
+                twist_.linear.x = 0;
+                twist_.linear.y = 0;
+            }
         }
     }
 

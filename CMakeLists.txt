@@ -144,7 +144,6 @@ add_executable(meca3_pub_odom src/pub_odom.cpp)
 add_executable(meca3_joycon   src/joycon.cpp)
 add_executable(meca3_mouse   src/mouse_receiver.cpp)
 add_executable(meca3_aruco   src/aruco.cpp)
-add_executable(meca3_subpub   src/fiducial_subpub.cpp)
 add_executable(meca3_trans   src/fiducial_transform_listener.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -169,9 +168,7 @@ target_link_libraries(meca3_mouse
 target_link_libraries(meca3_aruco 
   ${catkin_LIBRARIES}
 )
-target_link_libraries(meca3_subpub 
-  ${catkin_LIBRARIES}
-)
+
 target_link_libraries(meca3_trans 
   ${catkin_LIBRARIES}
 )
@@ -189,10 +186,6 @@ set_target_properties(meca3_mouse
 
 set_target_properties(meca3_aruco
                       PROPERTIES OUTPUT_NAME aruco
-                      PREFIX "") 
-
-set_target_properties(meca3_subpub
-                      PROPERTIES OUTPUT_NAME fiducial_subpub
                       PREFIX "") 
                       
  set_target_properties(meca3_trans
